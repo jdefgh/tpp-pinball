@@ -1,1 +1,1 @@
-worker: pinballData.py
+worker: py pinballData.py
