@@ -13,6 +13,7 @@ def connect():
     s.connect(("irc.chat.twitch.tv", 6667))
     s.send(b"NICK justinfan123\n")
     s.send(b"JOIN #twitchplayspokemon\n")
+    sys.stdout.write("Connected")
 s = socket.socket()
 connect()
 
