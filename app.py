@@ -25,11 +25,8 @@ while 1:
     for i in data:
         if PINBALL.search(i) is not None and i.startswith(":tpp"):
             x = PINBALL.split(i)
-            print(x)
-            with open("pinball.dat", "ab") as file:
-                table = TABLES.index(x[3])
-                score = int(x[1].replace(",", "")) // 50
-                data = ((score << 2) + table)
-                data = data.to_bytes(4, "big")
-                file.write(data)
-                file.close()
+            table = TABLES.index(x[3])
+            score = int(x[1].replace(",", "")) // 50
+            data = ((score << 2) + table)
+            data = data.to_bytes(4, "big")
+            print(data, end="")
