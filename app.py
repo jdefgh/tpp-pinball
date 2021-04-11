@@ -1,6 +1,7 @@
 import re
 import socket
 import time
+import sys
 
 PINBALL = re.compile("([\d,]*[\d]+) points \(x(\d+)\) on the (red|blue|gold|silver) pinball table",)
 
@@ -27,6 +28,5 @@ while 1:
             x = PINBALL.split(i)
             table = TABLES.index(x[3])
             score = int(x[1].replace(",", "")) // 50
-            data = ((score << 2) + table)
-            data = data.to_bytes(4, "big")
-            print(data, end="")
+            data = str(hex((score << 2) + table))[2:] + "\n"
+            sys.stdout.write(data)
